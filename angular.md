@@ -56,6 +56,44 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 блаблабла.spec.ts (красный ts) - файл с тестами; можно удалить.
 
+## Генерация компонента через командную строку
+
+Пример:
+
+```
+ng g c common-ui/profile-card
+```
+
+Здесь:
++ ng 
++ g - генерация
++ c - component
++ путь к папке, куда мы хотим положить компонент
++ /
++ название компонента (будет использовано в названиях файлов этого компонента)
+
+В этом примере у нас будет создано 4 файла:
+
++ profile-card.component.html
++ profile-card.component.scss
++ profile-card.component.spec.ts
++ profile-card.component.ts
+
+Тесты можно удалить вручную.
+
+Чтобы файл тестов изначально не создавался, в angular.json:
+
+```
+"@schematics/angular:component": {
+        блаблабла,
+        "skipTests": true,
+        блаблабла ....
+        }
+```
+
+
+
+
 
 
 
