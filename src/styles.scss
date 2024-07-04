@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Используем css-переменную:
+:root {
+    --dark-color: #000000;
+    --light-color: #FFFFFF;
+}
+
+body {
+    // Устанавливаем цвет с помощью css-переменной: вызываем функцию var и передаём в неё эту переменную
+    background-color: var(--dark-color); // фон
+    color: var(--light-color); // буквы
+}
