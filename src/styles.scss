@@ -1,13 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
 
-// Используем css-переменную:
+// Импорт штуки про шрифты
+@import "app/fonts";
+
+// Инициализируем css-переменные:
 :root {
     --dark-color: #000000;
     --light-color: #FFFFFF;
+    --primary-color: #AE7AFF;
 }
 
 body {
     // Устанавливаем цвет с помощью css-переменной: вызываем функцию var и передаём в неё эту переменную
     background-color: var(--dark-color); // фон
     color: var(--light-color); // буквы
+}
+
+.skill-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--light-color);
+    display: inline;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--dark-color);
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.h6 {
+    font-size: 18px;
+    line-height: 1.333;
+    font-weight: 800;
+}
+
+.subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
 }

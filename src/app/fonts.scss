@@ -1,0 +1,40 @@
+// Это файл для того, чтобы сделать какие-то штуки с импортированными (через скачивание) шрифтами
+// Этот файл нужно будет импортировать в файл с глобальными стилями
+
+// Используем директиву font-face
+@font-face {
+    font-display: swap;
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/assets/fonts/JetBrainsMono-Medium.woff2')
+} // Что здесь написано:
+// Когда используем шрифт, указанный в font-family, с такими-то font-style и font-weight, надо будет обратиться к файлу, указанному в src
+
+@font-face {
+    font-display: swap;
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 800;
+    src: url('/assets/fonts/JetBrainsMono-Bold.woff2')
+}
+// а тут: если используем этот шрифт с weight = 800, то будет уже другой шрифт из импортированного набора шрифтов
+
+// То есть, общая формула: используем такой-то шрифт с такими-то параметрами => обращаемся к такому-то файлу, содержащему такой-то шрифт;
+// если с другими параметрами => достаём из ещё какого-нибудь файла ещё какой-нибудь шрифт 
+
+@font-face {
+    font-display: swap;
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/JetBrainsMono-Thin.woff2')
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/assets/fonts/JetBrainsMono-SemiBold.woff2')
+}

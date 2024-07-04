@@ -1,0 +1,38 @@
+.profile-card {
+    border: 1px solid var(--light-color);
+    padding: 32px 24px;
+    display: grid;
+    // гриды автоматически дают резину (элементы внутри колонки переносятся на другую строку при изменении размера окна)
+
+    //
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 32px;
+    // Тут так, потому что 4 одинаковых колонки, между которыми расстояние 32px
+}
+
+.avatar-name {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    grid-gap: 20px;
+}
+
+.profile-card__avatar {
+    // настраиваем аватарку, чтобы была нужного размера и круглая
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden; // если контент выходит за рамки своего блока, то он hidden (выступающий кусок не виден)
+}
+
+.profile-card__name {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+
+
+
+
+
