@@ -1,16 +1,12 @@
 
-<!-- Разместили компонент profile-card в основном компоненте: -->
-<app-profile-card></app-profile-card>
-<!-- (для этого необходимо его импортировать в ts-файле того компонента, куда вставляем дочерний)  -->
-
+<div class="profile-card__wrapper">
 <!-- Выведем полученный с бэка ответ: -->
-<pre>
-  <!-- весь ответ -->
-  {{ profiles | json }}
-
-  <!-- определённое его поле -->
-  {{ profiles[0].username }}
-</pre>
-<!-- Чтобы вывести его в формате json, использовали "| json" - шаблонный пайп в ангуляре
-Тег pre - это тег, который сохраняет форматирование -->
-
+@for (profile of profiles; track profile.id) {
+  <app-profile-card
+    [profile] = "profile"
+  >
+  <!-- ( тут мы указали, что АТРИБУТ profile = profile из @for ) -->
+  </app-profile-card>
+}
+<!-- в track мы передаём что-то уникальное -->
+</div>
