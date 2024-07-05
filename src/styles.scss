@@ -2,12 +2,14 @@
 
 // Импорт штуки про шрифты
 @import "app/fonts";
+@import "margins";
 
 // Инициализируем css-переменные:
 :root {
     --dark-color: #000000;
     --light-color: #FFFFFF;
     --primary-color: #AE7AFF;
+    --grey-color: #5F646D;
 }
 
 *,
@@ -22,6 +24,7 @@ body {
     // Устанавливаем цвет с помощью css-переменной: вызываем функцию var и передаём в неё эту переменную
     background-color: var(--dark-color); // фон
     color: var(--light-color); // буквы
+    font-family: 'JetBrains Mono', sans-serif;
 }
 
 .skill-tag {
@@ -42,6 +45,25 @@ body {
     font-weight: 700;
     font-size: 14px;
     line-height: 2;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid var(--dark-color);
+}
+
+.btn-shadow { // тут мы делаем тень для кнопки
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        right: -4px;
+        background: var(--grey-color);
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        border-radius: 4px;
+    }
 }
 
 .h6 {
@@ -54,4 +76,36 @@ body {
     font-size: 14px;
     line-height: 1.5;
     font-weight: 400;
+}
+
+body {
+    background-image: url(/assets/images/background.jpg);
+}
+
+.h1 {
+    font-size: 48px;
+    line-height: 1.167;
+    font-weight: 800;
+}
+
+.tt-control-label {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.333;
+    display: block;
+}
+
+.tt-input {
+    margin-top: 8px;
+    display: block;
+    border: 1px solid var(--light-color);
+    border-radius: 4px;
+    padding: 12px 20px;
+    background-color: var(--dark-color);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: 'JetBrains Mono', sans-serif;
+    color: var(--light-color);
+    width: 100%;
 }
