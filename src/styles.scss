@@ -10,6 +10,14 @@
     --primary-color: #AE7AFF;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0; // убрали стандартный
+    padding: 0; // убрали стандартный
+} // это мы сделали CSS-reset
+
 body {
     // Устанавливаем цвет с помощью css-переменной: вызываем функцию var и передаём в неё эту переменную
     background-color: var(--dark-color); // фон
@@ -23,7 +31,7 @@ body {
     display: inline;
     font-size: 12px;
     font-weight: 700;
-    margin-right: 4px;
+    height: 24px;
 }
 
 .btn {
