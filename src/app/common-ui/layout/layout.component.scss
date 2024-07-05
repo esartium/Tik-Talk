@@ -1,0 +1,6 @@
+:host {
+// :host будет означать, что мы стилизуем компонент, 
+// к которому относится этот scss, то есть в данном случае app.layout
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
