@@ -1,12 +1,3 @@
 
-<div class="profile-card__wrapper">
-<!-- Выведем полученный с бэка ответ: -->
-@for (profile of profiles; track profile.id) {
-  <app-profile-card
-    [profile] = "profile"
-  >
-  <!-- ( тут мы указали, что АТРИБУТ profile = profile из @for ) -->
-  </app-profile-card>
-}
-<!-- в track мы передаём что-то уникальное -->
-</div>
+<!-- Эта штука будет смотреть в конфигурацию роутов (app.routes.ts) и понимать, что нужно рендерить, в зависимости от того, что в url -->
+<router-outlet></router-outlet>

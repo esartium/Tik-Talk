@@ -1,0 +1,11 @@
+<div class="profile-card__wrapper">
+    <!-- Выведем полученный с бэка ответ: -->
+    @for (profile of profiles; track profile.id) {
+      <app-profile-card
+        [profile] = "profile"
+      >
+      <!-- ( тут мы указали, что АТРИБУТ profile = profile из @for ) -->
+      </app-profile-card>
+    }
+    <!-- в track мы передаём что-то уникальное -->
+</div>
