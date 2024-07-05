@@ -4,6 +4,7 @@ import { ProfileCardComponent } from './common-ui/profile-card/profile-card.comp
 import { ProfileService } from './data/services/profile.service';
 import { inject } from '@angular/core';
 import { JsonPipe } from '@angular/common';
+import { Profile } from './data/interfaces/profile.interface';
 
 // Это декоратор (что-то вроде набора настроек для класса)
 @Component({
@@ -19,7 +20,7 @@ export class AppComponent { // сам класс компонента
   profileService = inject(ProfileService)
   // теперь в этой переменной сохранён инстанс этого сервиса
 
-  profiles: any = []; // указание здесь типа any уберёт ошибку, но вообще так не надо делать (*); как надо - показано в следующем коммите
+  profiles: Profile[] = [];
 
   constructor() {
 

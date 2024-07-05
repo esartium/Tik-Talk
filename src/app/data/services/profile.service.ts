@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Profile } from '../interfaces/profile.interface';
 
 // Декоратор
 @Injectable({
@@ -14,9 +15,10 @@ export class ProfileService {
   constructor() { }
 
   // вынесли в переменную базовый кусок url, который будет повторяться в каждом запросе
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  baseApiUrl: string = 'https://icherniakov.ru/yt-course/';
 
   getTestAccounts() {
-    return this.http.get(`${this.baseApiUrl}account/test_accounts`)
+    return this.http.get<Profile[]>(`${this.baseApiUrl}account/test_accounts`)
+    // такая запись называется "дженерик" (в метод гет мы передаём интерфейс; а внутри метода гет прописано, что если передан такой интерфейс, то метод гет вернёт соответствующий результат)
   }
 }
