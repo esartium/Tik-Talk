@@ -17,7 +17,7 @@ export class LoginPageComponent {
     password: new FormControl(null),
   })
 
-  onSubmit(event: Event):void {
-    console.log(event)
+  onSubmit():void {
+    console.log(this.form.value)
   }
 }
