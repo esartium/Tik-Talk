@@ -143,3 +143,4 @@ ng g c common-ui/layout
 npm install rxjs
 ```
 
+Точка входа - кусок данных, который поступает на конвейер.
