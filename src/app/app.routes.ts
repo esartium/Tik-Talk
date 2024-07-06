@@ -3,6 +3,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { LayoutComponent } from './common-ui/layout/layout.component';
+import { canActivateAuth } from './auth/access.guard';
 
 // Routes - это массив объектов, представляющих собой путь до страницы + компонент этой страницы
 export const routes: Routes = [
@@ -11,7 +12,9 @@ export const routes: Routes = [
     {path: '', component: LayoutComponent, children: [
         {path: '', component: SearchPageComponent},
         {path: 'profile', component: ProfilePageComponent}
-    ]},
+    ],
+    canActivate: [canActivateAuth] // использовали гард canActivate (есть и другие гарды) и передали туда наш гард; тем самым защитили эти страницы
+    },
     
     {path: 'login', component: LoginPageComponent},
 ];
