@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { TokenResponse } from './auth.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,17 @@ export class AuthService {
 
   http: HttpClient = inject(HttpClient);
 
+  cookieServise = inject(CookieService);
+
   baseApiUrl: string = 'https://icherniakov.ru/yt-course/auth/';
 
   access_token: string | null = null;
   refresh_token: string | null = null;
 
   get isAuth() { // геттер для проверки того, авторизован ли пользователь с таким токеном
+    if (!this.access_token) {
+      this.access_token = this.cookieServise.get('access_token')
+    }
     return !!this.access_token;
   }
 
@@ -33,6 +39,9 @@ export class AuthService {
           res => {
             this.access_token = res.access_token;
             this.refresh_token = res.refresh_token;
+
+            this.cookieServise.set('access_token', this.access_token);
+            this.cookieServise.set('refresh_token', this.refresh_token)
           })
         )
   }
