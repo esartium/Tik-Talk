@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
@@ -24,7 +24,6 @@ export class LoginPageComponent {
   })
 
   onSubmit():void {
-    
     if (this.form.valid) {
       console.log(this.form.value);
 
@@ -37,10 +36,11 @@ export class LoginPageComponent {
         
         console.log(res)
       }
-        //
       )
       // если тут в subscribe ничего не передано, то с ответом произойдёт то, что мы указали в пайпе в сервисе
       // если в пайпе нет вывода, но есть, например, присваивание значения ответа переменной, а здесь вывод есть, то res будет выведен в консоли
     } else console.log('Неверный логин или пароль')
   }
+
+  isPasswordVisible = signal<boolean>(false) // здесь в параметр кинули дефолтное значение
 }
