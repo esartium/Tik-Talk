@@ -1,0 +1,41 @@
+:host {
+    display: block;
+    padding: 20px 12px;
+}
+
+.main-menu-list {
+    display: grid;
+    grid-gap: 8px;
+    list-style: none;
+    background: none;
+}
+
+.menu-item {
+    padding: 16px 12px;
+    border: none;
+    color: var(--light-color);
+    background: none;
+    display: grid;
+    grid-template-columns: 16px 1fr max-content;
+    grid-gap: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.7;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    border-radius: 2px;
+
+    &:hover, &:focus-visible {
+        background: var(--dark-hover-color);
+        color: var(--primary-color);
+    }
+}
+
+.menu-item svg { // так делать не надо (максимально специфичный селектор должен стоять справа, по элементам не надо, так как он сначала найдет все теги svg, а потом отсеет)
+    width: 16px;
+    height: 16px;
+}
+
+
+
