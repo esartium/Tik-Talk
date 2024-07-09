@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from '../interfaces/profile.interface';
 import { tap } from 'rxjs';
+import { Pageble } from '../interfaces/pageble.interface';
+import { map } from 'rxjs';
 
 // Декоратор
 @Injectable({
@@ -31,5 +33,13 @@ export class ProfileService {
     )
   }
 
+  getSubscribersShortList() { // получаем краткий список подписчиков для сайдбара
+    return this.http.get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
+      .pipe(
+        map( // использовали, чтобы вывести только items без служебной инфы про пагинацию
+          res => res.items.slice(0,3) // slice тут, чтобы вывести только первые 3 элемента
+        )
+      )
+  }
 
 }

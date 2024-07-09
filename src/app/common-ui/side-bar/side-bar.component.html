@@ -12,6 +12,24 @@
     </ul>
 </nav>
 
+<p class="medium-text mb20 mt20"> Подписчики </p>
+
+<!-- <pre>
+    {{ subscribers$ | async | json }} -->
+
+    <!-- тут использовали пайп async; он помогает выводить результат асинхронной операции -->
+    <!-- под капотом этот пайп сделает subscribe на результат запроса (потом отписку тоже сделает)
+    применение этого пайпа даст нам Object; его надо будет ещё распарсить с помощью json-пайпа  -->
+<!-- </pre> -->
+
+@for (profile of subscribers$ | async; track profile.id) {
+    <app-subscriber-card
+        [profile]="profile"
+    ></app-subscriber-card>
+}
+
+
+
 
 
 
