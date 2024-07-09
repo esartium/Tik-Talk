@@ -2,14 +2,13 @@
 
 <nav>
     <ul class="main-menu-list">
-        @for (item of menuItems; track item.icon) {
-            <li>
+            <li *ngFor="let item of menuItems">
                 <button class="menu-item"> 
                     <svg [icon]="item.icon"></svg>
                     <span> {{ item.label }} </span>
                 </button> 
             </li>
-        }
+        
     </ul>
 </nav>
 
