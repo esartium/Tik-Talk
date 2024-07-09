@@ -29,6 +29,10 @@
     &:hover, &:focus-visible {
         background: var(--dark-hover-color);
         color: var(--primary-color);
+
+        .menu-item svg { // так делать не надо (максимально специфичный селектор должен стоять справа, по элементам не надо, так как он сначала найдет все теги svg, а потом отсеет)
+            color: var(--primary-color);
+        }
     }
 }
 
