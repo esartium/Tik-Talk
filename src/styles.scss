@@ -24,8 +24,12 @@
 body {
     // Устанавливаем цвет с помощью css-переменной: вызываем функцию var и передаём в неё эту переменную
     background-color: var(--dark-color); // фон
+
     color: var(--light-color); // буквы
     font-family: 'JetBrains Mono', sans-serif;
+    background-image: url(/assets/images/background.jpg);
+    background-size: cover; // это чтобы фон растягивался на всю страницу
+    height: 90dvh;
 }
 
 .skill-tag {
@@ -77,10 +81,6 @@ body {
     font-size: 14px;
     line-height: 1.5;
     font-weight: 400;
-}
-
-body {
-    background-image: url(/assets/images/background.jpg);
 }
 
 .h1 {

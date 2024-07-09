@@ -1,6 +1,8 @@
 :host {
+    background: var(--dark-color);
     display: block;
     padding: 20px 12px;
+    position: relative; // это для того, чтобы прилепить футер сайдбара к низу
 }
 
 .main-menu-list {
@@ -57,3 +59,35 @@
     height: 18px;
 }
 
+.sidebar__footer {
+    background-color: var(--dark-hover-color);
+    border-radius: 2px;
+    padding: 4px 16px;
+    display: grid;
+    grid-template-columns: 32px 1fr 16px;
+    grid-gap: 12px;
+    align-items: center;
+    position: absolute; // это для того, чтобы прилепить футер сайдбара к низу
+    bottom: 20px; // это для того, чтобы прилепить футер сайдбара к низу
+
+    // чтобы не выезжало за границу страницы
+    width: calc(100% - 20px);
+}
+
+.sidebar__footer img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.username-text {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.settings-btn {
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+}

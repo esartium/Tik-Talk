@@ -5,11 +5,15 @@ import { SubscriberCardComponent } from './subscriber-card/subscriber-card.compo
 import { ProfileService } from '../../data/services/profile.service';
 import { JsonPipe, AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router'; 
+import { firstValueFrom } from 'rxjs';
+import { ImgUrlPipe } from '../../helpers/pipes/img-url.pipe';
+import { Profile } from '../../data/interfaces/profile.interface';
+import { signal } from '@angular/core';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [SvgIconComponent, NgForOf, SubscriberCardComponent, JsonPipe, AsyncPipe, RouterLink],
+  imports: [SvgIconComponent, NgForOf, SubscriberCardComponent, JsonPipe, AsyncPipe, RouterLink, ImgUrlPipe],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
 })
@@ -34,5 +38,17 @@ export class SideBarComponent {
       icon: 'search',
       link: 'search' // корень сайта
     },
-  ]
+  ];
+
+  // me = this.profileService.me; // тут me - просто переменная; без реативности ангуляр не захочет отрисовывать её значение
+  // но отрисует, если мы сделаем её сигналом:
+  me = this.profileService.me;
+
+  ngOnInit() {
+    // если мы делаем subscribe, нам всегда надо делать un subscribe;
+    // так же, как и необходимо делать clearTimeout, clearInterval, removeEventListener ("прибираться" за собой, чтобы не было утече памяти);
+
+    // как можно сделать без сабскрайба, чтобы не надо было париться с отпиской:
+    firstValueFrom(this.profileService.getMe()) // мы получим промис
+  }
 }

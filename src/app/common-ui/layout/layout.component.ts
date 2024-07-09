@@ -13,7 +13,7 @@ import { ProfileService } from '../../data/services/profile.service';
 export class LayoutComponent {
   ProfileService = inject(ProfileService);
 
-  ngOnInit() { // это один из live cycle hooks; означает выполнение какой-то функции при инициализации компонента (можно сказать, что при рендере)
-    this.ProfileService.getMe().subscribe();
-  }
+  // ngOnInit() { // это один из live cycle hooks; означает выполнение какой-то функции при инициализации компонента (можно сказать, что при рендере)
+  //   this.ProfileService.getMe().subscribe();
+  // } // больше не нужен этот запрос, мы теперь такой же делаем в другом компоненте, два таких нам не надо
 }

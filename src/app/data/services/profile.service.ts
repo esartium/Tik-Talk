@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from '../interfaces/profile.interface';
 import { tap } from 'rxjs';
@@ -25,10 +25,14 @@ export class ProfileService {
     // такая запись называется "дженерик" (в метод гет мы передаём интерфейс; а внутри метода гет прописано, что если передан такой интерфейс, то метод гет вернёт соответствующий результат)
   }
 
+  me = signal<Profile | null>(null); // в эту переменную после авторизации будем помещать информацию об авторизованном юзере (только это не просто переменная, а сигнал)
+
   getMe() {
     return this.http.get<Profile>(`${this.baseApiUrl}account/me`).pipe(
-      tap(
-        res => console.log(res)
+      tap( (res: Profile) => {
+        this.me.set(res);
+        console.log(res);
+      }
       )
     )
   }
