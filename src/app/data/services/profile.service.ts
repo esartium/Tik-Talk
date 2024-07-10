@@ -38,7 +38,7 @@ export class ProfileService {
   }
 
   getAccount(id: string) { // получаем данные нужного профиля по id
-    return this.http.get(`${this.baseApiUrl}account/${id}`)
+    return this.http.get<Profile>(`${this.baseApiUrl}account/${id}`)
   }
 
   getSubscribersShortList(subsAmount:number = 3) { // получаем краткий список подписчиков для сайдбара
@@ -48,6 +48,13 @@ export class ProfileService {
           res => res.items.slice(0,subsAmount) // slice тут, чтобы вывести только первые 3 элемента
         )
       )
+  }
+
+  patchProfile(profile: Partial<Profile>) { // Редактирование профиля; Partial значит, что не обязательно должны прийти все поля из Profile
+    return this.http.patch<Profile>(
+      `${this.baseApiUrl}account/me`,
+      profile
+    )
   }
 
 }

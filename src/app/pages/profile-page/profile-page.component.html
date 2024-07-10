@@ -32,9 +32,9 @@
             <a [routerLink]="['/search']" class="to-subscribers-search"></a>
             </div>
 
-            <h3 class="h6 mb16"> Навыки </h3>
+            <h3 class="h6 mb16"> Стек </h3>
             <div class="stack-wrapper mb32">
-                @for (skill of ['js', 'css']; track skill) {
+                @for (skill of profile.stack; track skill) {
                     <div class="skill-tag"> {{ skill }} </div>
                 }
             </div>
@@ -42,8 +42,7 @@
             <h3 class="h6 mb16"> О себе </h3>
             <div class="description-wrapper">
                 <p class="medium-text">
-                    <!-- {{ profile.description }} -->
-                      blablabla
+                    {{ profile.description }}
                 </p>
             </div>
         

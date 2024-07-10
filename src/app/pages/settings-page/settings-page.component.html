@@ -1,0 +1,47 @@
+
+<!-- <app-profile-header 
+    [profile]="profile"
+></app-profile-header> -->
+
+<form class="profile-form__wrapper" [formGroup]="form">
+    
+    <div class="profile-form">
+
+        <div class="two-columns">
+            <label class="tt-form-label">
+                <span class="tt-form-label-text"> Имя </span>
+                <input formControlName="firstName" type="text" class="tt-form-input">
+            </label>
+
+            <label class="tt-form-label">
+                <span class="tt-form-label-text"> Фамилия </span>
+                <input formControlName="lastName" type="text" class="tt-form-input">
+            </label>
+        </div>
+
+        <label class="tt-form-label">
+            <span class="tt-form-label-text"> Telegram username </span>
+            <input formControlName="username" type="text" class="tt-form-input">
+        </label>
+        
+        <label class="tt-form-label">
+            <span class="tt-form-label-text"> О себе </span>
+            <textarea formControlName="description" class="tt-form-input tt-textarea" rows="4"></textarea>
+        </label>
+
+        <label class="tt-form-label">
+            <span class="tt-form-label-text"> Стек </span>
+            <input formControlName="stack" type="text" class="tt-form-input">
+        </label>
+
+    </div>
+
+    <div class="form-btns__wrapper">
+        <div>
+            <button class="btn" (click)="onSave()"> Сохранить </button>
+        </div>
+    </div>
+
+</form>
+
+
