@@ -27,7 +27,7 @@ export class ProfileService {
 
   me = signal<Profile | null>(null); // в эту переменную после авторизации будем помещать информацию об авторизованном юзере (только это не просто переменная, а сигнал)
 
-  getMe() {
+  getMe() { // получаем данные своего профиля
     return this.http.get<Profile>(`${this.baseApiUrl}account/me`).pipe(
       tap( (res: Profile) => {
         this.me.set(res);
@@ -37,11 +37,15 @@ export class ProfileService {
     )
   }
 
-  getSubscribersShortList() { // получаем краткий список подписчиков для сайдбара
+  getAccount(id: string) { // получаем данные нужного профиля по id
+    return this.http.get(`${this.baseApiUrl}account/${id}`)
+  }
+
+  getSubscribersShortList(subsAmount:number = 3) { // получаем краткий список подписчиков для сайдбара
     return this.http.get<Pageble<Profile>>(`${this.baseApiUrl}account/subscribers/`)
       .pipe(
         map( // использовали, чтобы вывести только items без служебной инфы про пагинацию
-          res => res.items.slice(0,3) // slice тут, чтобы вывести только первые 3 элемента
+          res => res.items.slice(0,subsAmount) // slice тут, чтобы вывести только первые 3 элемента
         )
       )
   }

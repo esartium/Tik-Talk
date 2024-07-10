@@ -11,7 +11,7 @@ export const routes: Routes = [
     // для создания дочернего роутера:
     {path: '', component: LayoutComponent, children: [
         {path: '', component: SearchPageComponent},
-        {path: 'profile', component: ProfilePageComponent}
+        {path: 'profile/:id', component: ProfilePageComponent} // тут :id значит, что эту часть роута ангуляр примет за переменную id (это чтобы по такому url с конкретным id мы могли перейти на профиль определённого юзера); получить эту переменную мы можем с помощью rxjs в ProfilePageComponent
     ],
     canActivate: [canActivateAuth] // использовали гард canActivate (есть и другие гарды) и передали туда наш гард; тем самым защитили эти страницы
     },
