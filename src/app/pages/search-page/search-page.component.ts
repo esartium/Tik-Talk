@@ -4,28 +4,22 @@ import { ProfileService } from '../../data/services/profile.service';
 import { RouterOutlet } from '@angular/router';
 import { ProfileCardComponent } from '../../common-ui/profile-card/profile-card.component';
 import { JsonPipe } from '@angular/common';
+import { ProfileFiltersComponent } from './profile-filters/profile-filters.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [RouterOutlet, ProfileCardComponent, JsonPipe],
+  imports: [ProfileFiltersComponent, RouterOutlet, ProfileCardComponent, JsonPipe, AsyncPipe],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss'
 })
 export class SearchPageComponent {
-  // запрашиваем у ангуляра (инжектируем) созданный нами сервис
   profileService = inject(ProfileService)
-  // теперь в этой переменной сохранён инстанс этого сервиса
 
-  profiles: Profile[] = [];
+  profiles = this.profileService.filteredProfiles;
 
   constructor() {
-
-    this.profileService.getTestAccounts()
-    .subscribe(value => {
-      this.profiles = value
-    })
-    // subscribe ~~= "подписаться на ответ"
 
   }
 }
