@@ -11,7 +11,8 @@ export const routes: Routes = [
 
     // для создания дочернего роутера:
     {path: '', component: LayoutComponent, children: [
-        {path: '', component: SearchPageComponent},
+        {path: '', redirectTo: 'profile/me', pathMatch: 'full'},
+        {path: 'search', component: SearchPageComponent},
         {path: 'profile/:id', component: ProfilePageComponent}, // тут :id значит, что эту часть роута ангуляр примет за переменную id (это чтобы по такому url с конкретным id мы могли перейти на профиль определённого юзера); получить эту переменную мы можем с помощью rxjs в ProfilePageComponent
         {path: 'settings', component: SettingsPageComponent}
     ],

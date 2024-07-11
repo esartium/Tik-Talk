@@ -4,7 +4,7 @@ import { NgForOf } from '@angular/common';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
 import { ProfileService } from '../../data/services/profile.service';
 import { JsonPipe, AsyncPipe } from '@angular/common';
-import { RouterLink } from '@angular/router'; 
+import { RouterLink, RouterLinkActive } from '@angular/router'; 
 import { firstValueFrom } from 'rxjs';
 import { ImgUrlPipe } from '../../helpers/pipes/img-url.pipe';
 import { Profile } from '../../data/interfaces/profile.interface';
@@ -13,7 +13,7 @@ import { signal } from '@angular/core';
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [SvgIconComponent, NgForOf, SubscriberCardComponent, JsonPipe, AsyncPipe, RouterLink, ImgUrlPipe],
+  imports: [SvgIconComponent, NgForOf, SubscriberCardComponent, JsonPipe, AsyncPipe, RouterLink, RouterLinkActive, ImgUrlPipe],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss'
 })

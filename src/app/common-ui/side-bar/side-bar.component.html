@@ -3,7 +3,7 @@
 <nav>
     <ul class="main-menu-list">
             <li *ngFor="let item of menuItems">
-                <a class="menu-item" [routerLink]=[item.link] routerLinkActive="router-link-active" > 
+                <a class="menu-item" [routerLink]=[item.link] routerLinkActive="active" > 
                     <!-- item.link передаём как массив, так как router-link принимает кусочки пути в таком виде -->
                     <svg [icon]="item.icon"></svg>
                     <span> {{ item.label }} </span>
