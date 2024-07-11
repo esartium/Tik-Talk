@@ -1,19 +1,24 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, ViewChild, effect, inject } from '@angular/core';
 import { ProfileHeaderComponent } from '../../common-ui/profile-header/profile-header.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControlName } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../data/services/profile.service';
 import { firstValueFrom } from 'rxjs';
+import { AvatarUploadComponent } from './avatar-upload/avatar-upload.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-settings-page',
   standalone: true,
-  imports: [ProfileHeaderComponent, ReactiveFormsModule],
+  imports: [ProfileHeaderComponent, ReactiveFormsModule, AvatarUploadComponent, RouterLink],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss'
 })
 export class SettingsPageComponent {
+
+  // Чтобы можно было использовать в этом компоненте поля дочернего компонента:
+  @ViewChild(AvatarUploadComponent) AvatarUploader!: AvatarUploadComponent;
 
   // другой способ создания форм (делаем ту же FormGroup, но с помощью FormBuilder):
   fb = inject(FormBuilder);
@@ -46,6 +51,10 @@ export class SettingsPageComponent {
     // делаем, чтобы при сохранении все поля считались touched, и все валидаторы отработали, и всё ещё раз перепроверилось
 
     if(this.form.invalid) return;
+
+    if(this.AvatarUploader.avatar) {
+      firstValueFrom(this.profileService.uploadAvatar(this.AvatarUploader.avatar));
+    }
 
     // @ts-ignore
     firstValueFrom(this.profileService.patchProfile({

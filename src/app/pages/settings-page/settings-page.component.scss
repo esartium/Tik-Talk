@@ -1,7 +1,8 @@
 :host {
     display: grid;
     grid-gap: 48px;
-    grid-template-columns: 322px 1fr;
+    grid-template-columns: 664px 1fr;
+    // width: 60%;
     padding: 24px;
 }
 
@@ -16,7 +17,7 @@
     justify-content: space-between;
     background: var(--dark-color);
     padding: 32px;
-    height: calc(100dvh - (24px*4));
+    // height: calc(100dvh - (24px*4));
     border: 1px solid var(--light-color);
 } 
 

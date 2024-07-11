@@ -30,15 +30,20 @@
         </label>
 
         <label class="tt-form-label">
+            <span class="tt-form-label-text"> Аватар </span>
+            <app-avatar-upload></app-avatar-upload>
+        </label>
+
+        <label class="tt-form-label">
             <span class="tt-form-label-text"> Стек </span>
-            <input formControlName="stack" type="text" class="tt-form-input">
+            <input formControlName="stack" type="text" class="tt-form-input mb32">
         </label>
 
     </div>
 
     <div class="form-btns__wrapper">
         <div>
-            <button class="btn" (click)="onSave()"> Сохранить </button>
+            <a style="text-decoration: none;" [routerLink]="['/profile/me']" routerLinkActive="router-link-active"  class="btn" (click)="onSave()"> Сохранить </a>
         </div>
     </div>
 
